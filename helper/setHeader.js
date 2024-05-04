@@ -1,7 +1,7 @@
 global.cdnname = "shdbdecdnems05";
 
 module.exports = function (req, res) {
-  const allowlist = ["http://localhost:3000", "https://rajapolavarapu.vercel.app", "https://devpreview.netlify.app", "https://rajapolavarapu.in"];
+  const allowlist = ["http://localhost:3000", "https://altimetrik-task-ui.vercel.app"];
   const allowed = allowlist.includes(req.headers.origin) ? req.headers.origin : "null"
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader("Cache-Control", "s-maxage=300, stale-while-revalidate");

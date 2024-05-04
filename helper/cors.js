@@ -5,7 +5,8 @@ module.exports = (options = {}) => {
         "http://localhost:3000",
         "https://rajapolavarapu.vercel.app",
         "https://devpreview.netlify.app",
-        "https://rajapolavarapu.in"
+        "https://rajapolavarapu.in",
+        "https://altimetrik-task-ui.vercel.app"
     ];
     const multiple = Array.isArray(allowlist);
 

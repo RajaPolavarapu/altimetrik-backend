@@ -1,8 +1,8 @@
 const setHeader = require("../helper/setHeader");
 const jwt = require('jsonwebtoken');
 const path = require('path');
-const uuid = require("uuid").v4;
 const fs = require('fs');
+const tmpDir = require('os').tmpdir();
 
 const update = async (req, res) => {
     setHeader(req, res);
@@ -10,7 +10,7 @@ const update = async (req, res) => {
 
     const { user, token } = req.body;
 
-    let users = JSON.parse(fs.readFileSync(path.join(__dirname, 'users.json')));
+    let users = JSON.parse(fs.readFileSync(path.join(tmpDir, 'users.json')));
 
     const isValid = jwt.verify(token, JWT_SECRET)
 
@@ -23,7 +23,7 @@ const update = async (req, res) => {
     });
 
     if (!!isValid) {
-        fs.writeFileSync(path.join(__dirname, 'users.json'), JSON.stringify(users));
+        fs.writeFileSync(path.join(tmpDir, 'users.json'), JSON.stringify(users));
         return res.json(users);
     }
 

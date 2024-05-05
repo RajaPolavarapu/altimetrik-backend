@@ -3,6 +3,7 @@ const jwt = require('jsonwebtoken');
 const path = require('path');
 const uuid = require("uuid").v4;
 const fs = require('fs');
+const tmpDir = require('os').tmpdir();
 
 const login = async (req, res) => {
     setHeader(req, res);
@@ -11,7 +12,7 @@ const login = async (req, res) => {
     const { username, password } = req.body;
     const tokenAge = 60; // In minutes
 
-    const users = JSON.parse(fs.readFileSync(path.join(__dirname, 'users.json')));
+    const users = JSON.parse(fs.readFileSync(path.join(tmpDir, 'users.json')));
 
     const user = users.find(u => u.username === username);
 
